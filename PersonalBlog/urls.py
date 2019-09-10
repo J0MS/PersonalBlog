@@ -18,11 +18,16 @@ from django.urls import include,path
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from Home import views
 
 urlpatterns = [
     path('Home/', include('Home.urls')),
+    # path('about/', include('Home.urls')),
+    # path('about/', About.as_view()),
+    path('about/', views.About.as_view(), name='about'),
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/Home/', permanent=True)),
+    # path('Home/about', RedirectView.as_view(url='/about/', permanent=True)),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
