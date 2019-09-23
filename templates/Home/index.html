@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bulma Navigation Tutorial</title>
+    <title>P</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
@@ -41,9 +41,28 @@
     </div>
 
 
+    {%if all_Post%}
+        {% for post in all_Post %}
+        <!-- <a href="{% url 'onePost' post.id %}"> -->
+            <div class="post">
+                <div class="post_title">
+                    <b>{{ post.title }}</b>
+                </div>
+                <div class="post_date">
+                    {{ post.date }}
+                </div>
+                <div class="post_paragraph">
+                    {{ post.paragraph }}
+                </div>
+            </div>
+
+        {% endfor %}
+            {%else%}
+            <h1>No hay Post!</h1>
+    {% endif %}
 
 
-    <footer class="footer">
+   <footer class="footer">
         <div class="content has-text-centered">
             <p>
                 Made with <strong>❤</strong> by <a href="https://github.com/J0MS"> @JOMS </a>.

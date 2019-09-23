@@ -19,9 +19,14 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from Home import views
+from django.conf.urls import handler404
+from Post.views import showAllPost  
+
 
 urlpatterns = [
-    path('Home/', include('Home.urls')),
+    # path('Home/', include('Home.urls')),
+    path('Home/', showAllPost, name='Home'),
+    path('posts/', include('Post.urls')),
     # path('about/', include('Home.urls')),
     # path('about/', About.as_view()),
     path('about/', views.About.as_view(), name='about'),
@@ -30,9 +35,5 @@ urlpatterns = [
     # path('Home/about', RedirectView.as_view(url='/about/', permanent=True)),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+handler404 = 'Post.views.error_404_Post'
 
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('catalog/', include('catalog.urls')),
-#     path('/', RedirectView.as_view(url='/catalog/', permanent=True)),
-# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
